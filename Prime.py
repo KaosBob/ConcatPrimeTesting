@@ -148,5 +148,4 @@ if __name__ == "__main__":
     else:
         #TESTING THIS LINE AGAIN AGAIN#
         print("Code updated restarting")
-        os.startfile(__file__)
-        sys.exit()
+        os.execv(sys.executable, ['python3'] + sys.argv)
