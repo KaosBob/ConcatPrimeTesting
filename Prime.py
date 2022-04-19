@@ -102,6 +102,7 @@ def read(Fname, b=0):
         y = int(requests.get(
             f"https://raw.githubusercontent.com/KaosBob/ConcatPrimeTesting/master/Files/{Fname}.txt").text)
     except:
+        print("ERROR: NO CONNECTION")
         return x
     return x * (x >= y) + y * (y > x)
 
@@ -134,6 +135,17 @@ def main():
 
 
 if __name__ == "__main__":
-    g = git.cmd.Git("https://github.com/KaosBob/ConcatPrimeTesting")
-    g.pull()
-    main()
+    try:
+        print("Checking code version")
+        g = git.cmd.Git("https://github.com/KaosBob/ConcatPrimeTesting")
+        x = g.pull()
+    except:
+        print("ERROR: NO CONNECTION")
+        main()
+    if x == "Already up to date.":
+        print("Code is up to date")
+        main()
+    else:
+        print("Code updated restarting")
+        os.startfile(__file__)
+        sys.exit()
