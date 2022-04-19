@@ -84,6 +84,14 @@ def save(Fname, x):
     f = open(f"Files\\{Fname}.txt", "w")
     f.write(str(x))
     f.close()
+    try:
+        repo = Repo("https://github.com/KaosBob/ConcatPrimeTesting")
+        repo.git.add(update=True)
+        repo.index.commit(f"new {Fname} value")
+        origin = repo.remote(name='origin')
+        origin.push()
+    except:
+        print('Some error occured while pushing the code')
 
 
 def read(Fname, b=0):
