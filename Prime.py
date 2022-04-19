@@ -146,7 +146,7 @@ if __name__ == "__main__":
         print("Code is up to date")
         main()
     else:
-        #TESTING THIS LINE AGAIN#
+        #TESTING THIS LINE AGAIN AGAIN#
         print("Code updated restarting")
         os.startfile(__file__)
         sys.exit()
