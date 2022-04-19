@@ -84,14 +84,14 @@ def save(Fname, x):
     f = open(f"Files\\{Fname}.txt", "w")
     f.write(str(x))
     f.close()
-    """ try:
-        repo = Repo("https://github.com/KaosBob/ConcatPrimeTesting")
+    try:
+        repo = git.Repo("D:\\Users\KaosBob\Desktop\Programs\Python\ConcatPrime Tests\.git")
         repo.git.add(update=True)
         repo.index.commit(f"new {Fname} value")
         origin = repo.remote(name='origin')
         origin.push()
-    except:
-        print('Some error occured while pushing the code') """
+    except Exception as e:
+        print('Some error occured while pushing the code', e)
 
 
 def read(Fname, b=0):
