@@ -136,4 +136,5 @@ def main():
 if __name__ == "__main__":
     g = git.cmd.Git("https://github.com/KaosBob/ConcatPrimeTesting")
     g.pull()
+    #TESTING#
     # main()
