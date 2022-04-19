@@ -74,10 +74,14 @@ def sendEmail(receivers, subject="Subject not provided", body="Body not provided
     msg["From"] = sender
     msg["To"] = ",".join(receivers)
 
-    s = smtplib.SMTP_SSL("smtp.gmail.com", 465)
-    s.login("ksb.pymail00@gmail.com", "wzjhrjpsnnejmbrk")
-    s.sendmail(sender, receivers, msg.as_string())
-    s.quit()
+    try:
+        s = smtplib.SMTP_SSL("smtp.gmail.com", 465)
+        s.login("ksb.pymail00@gmail.com", "wzjhrjpsnnejmbrk")
+        s.sendmail(sender, receivers, msg.as_string())
+    except Exception as e:
+        print(e)
+    finally:
+        s.quit()
 
 
 def save(Fname, x):
