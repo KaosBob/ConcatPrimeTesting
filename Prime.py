@@ -158,6 +158,7 @@ if __name__ == "__main__":
         x = g.pull()
     except Exception as e:
         print(e)
+        print("Starting anyway")
         main()
     if x == "Already up to date.":
         print("Code is up to date")
