@@ -84,14 +84,18 @@ def save(Fname, x):
     f = open(f"Files\\{Fname}.txt", "w")
     f.write(str(x))
     f.close()
+
+
+def push(Fname):
     try:
-        repo = git.Repo("D:\\Users\KaosBob\Desktop\Programs\Python\ConcatPrime Tests\.git")
+        repo = git.Repo(
+            "D:\\Users\KaosBob\Desktop\Programs\Python\ConcatPrime Tests\.git")
         repo.git.add(update=True)
         repo.index.commit(f"new {Fname} value")
         origin = repo.remote(name='origin')
         origin.push()
     except Exception as e:
-        print('Some error occured while pushing the code', e)
+        print(e)
 
 
 def read(Fname, b=0):
@@ -109,8 +113,8 @@ def read(Fname, b=0):
     try:
         y = int(requests.get(
             f"https://raw.githubusercontent.com/KaosBob/ConcatPrimeTesting/master/Files/{Fname}.txt").text)
-    except:
-        print("ERROR: NO CONNECTION")
+    except Exception as e:
+        print(e)
         return x
     return x * (x >= y) + y * (y > x)
 
@@ -122,15 +126,19 @@ def Test(x, i, primes):
         if (x % prime == 0):
             return str(prime)
     if miller_rabin(x):
+        # TODO ADD POTENTIAL LIST OF PRIMES
         sendEmail(["ksb.test001@gmail.com"], "Prime Number Found!",
                   f"{x} was found to be prime by the MillerTest.<br>Further checking is required")
     else:
+        push("x")
+        push("i")
         return "MillerTest Failed"
 
 
 def main():
-    x = read("TESTx", 1)
-    i = read("TESTi")
+    x = read("x", 1)
+    i = read("i")
+    temp = i
     primes = []
     primes = readPrime(primes)
     while True:
@@ -138,8 +146,8 @@ def main():
         i += 1
         print(
             f"Iteration number {i - 1} is not prime because: {Test(x, i - 1, primes)}")
-        save("TESTx", x)
-        save("TESTi", i)
+        save("x", x)
+        save("i", i)
 
 
 if __name__ == "__main__":
@@ -147,8 +155,8 @@ if __name__ == "__main__":
         print("Checking code version")
         g = git.cmd.Git("https://github.com/KaosBob/ConcatPrimeTesting")
         x = g.pull()
-    except:
-        print("ERROR: NO CONNECTION")
+    except Exception as e:
+        print(e)
         main()
     if x == "Already up to date.":
         print("Code is up to date")
