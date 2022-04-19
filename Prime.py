@@ -126,7 +126,8 @@ def Test(x, i, primes):
         if (x % prime == 0):
             return str(prime)
     if miller_rabin(x):
-        # TODO ADD POTENTIAL LIST OF PRIMES
+        save("ConcatPrimes", x)
+        push("ConcatPrimes")
         sendEmail(["ksb.test001@gmail.com"], "Prime Number Found!",
                   f"{x} was found to be prime by the MillerTest.<br>Further checking is required")
     else:
