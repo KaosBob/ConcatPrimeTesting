@@ -66,7 +66,7 @@ def sendEmail(receivers, subject="Subject not provided", body="Body not provided
     if body == "":
         body = "Body not provided"
 
-    sender = "ksb.pymail@gmail.com"
+    sender = "ksb.pymail00@gmail.com"
     body = body + "<br><br><br><br><br>Sent by python"
 
     msg = MIMEText(body, "html")
@@ -75,7 +75,7 @@ def sendEmail(receivers, subject="Subject not provided", body="Body not provided
     msg["To"] = ",".join(receivers)
 
     s = smtplib.SMTP_SSL("smtp.gmail.com", 465)
-    s.login("ksb.pymail@gmail.com", "pymail123!")
+    s.login("ksb.pymail00@gmail.com", "wzjhrjpsnnejmbrk")
     s.sendmail(sender, receivers, msg.as_string())
     s.quit()
 
@@ -136,5 +136,4 @@ def main():
 if __name__ == "__main__":
     g = git.cmd.Git("https://github.com/KaosBob/ConcatPrimeTesting")
     g.pull()
-    #TESTING#
-    # main()
+    main()
