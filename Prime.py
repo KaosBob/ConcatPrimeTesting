@@ -84,14 +84,14 @@ def save(Fname, x):
     f = open(f"Files\\{Fname}.txt", "w")
     f.write(str(x))
     f.close()
-    try:
+    """ try:
         repo = Repo("https://github.com/KaosBob/ConcatPrimeTesting")
         repo.git.add(update=True)
         repo.index.commit(f"new {Fname} value")
         origin = repo.remote(name='origin')
         origin.push()
     except:
-        print('Some error occured while pushing the code')
+        print('Some error occured while pushing the code') """
 
 
 def read(Fname, b=0):
@@ -129,8 +129,8 @@ def Test(x, i, primes):
 
 
 def main():
-    x = read("x", 1)
-    i = read("i")
+    x = read("TESTx", 1)
+    i = read("TESTi")
     primes = []
     primes = readPrime(primes)
     while True:
@@ -138,8 +138,8 @@ def main():
         i += 1
         print(
             f"Iteration number {i - 1} is not prime because: {Test(x, i - 1, primes)}")
-        save("x", x)
-        save("i", i)
+        save("TESTx", x)
+        save("TESTi", i)
 
 
 if __name__ == "__main__":
