@@ -162,6 +162,7 @@ if __name__ == "__main__":
         main()
     if x == "Already up to date.":
         print("Code is up to date")
+        print('Starting')
         main()
     else:
         print("Code updated restarting")
