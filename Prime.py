@@ -4,6 +4,8 @@ import smtplib
 import ssl
 from email.mime.text import MIMEText
 
+import git
+
 import requests
 
 
@@ -96,7 +98,12 @@ def read(Fname, b=0):
     f = open(f"Files\\{Fname}.txt", "r+")
     x = int(f.read())
     f.close()
-    return x
+    try:
+        y = int(requests.get(
+            f"https://raw.githubusercontent.com/KaosBob/ConcatPrimeTesting/master/Files/{Fname}.txt").text)
+    except:
+        return x
+    return x * (x >= y) + y * (y > x)
 
 
 def Test(x, i, primes):
@@ -126,11 +133,7 @@ def main():
         save("i", i)
 
 
-def TESTING():
-    x = requests.get('https://w3schools.com/python/demopage.htm')
-    print(x.text)
-
-
 if __name__ == "__main__":
-    TESTING()
+    g = git.cmd.Git("https://github.com/KaosBob/ConcatPrimeTesting")
+    g.pull()
     # main()
